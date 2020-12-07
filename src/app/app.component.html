@@ -1,0 +1,25 @@
+<h1>FIT2095, Translate App</h1>
+<form>
+
+  <div class="form-group">
+    <label for="userText">Your Text in English</label>
+    <input type="text" class="form-control" id="userText" name="usetText" [(ngModel)]="userText">
+  </div>
+
+  <div>
+  <p>Select a Language</p>
+  <ul class="targets">
+    <li *ngFor="let t of targets" [class.selected]="t === target" (click)="onSelect(t)">
+      {{t}}
+    </li>
+  </ul>
+  </div> 
+
+  <button class="button" (click)="submitText()">Submit</button>
+</form>
+
+<audio controls id="au" [attr.disabled]="!visibility.canListen">
+  <source src="" type="audio/mpeg">
+</audio>
+
+<p *ngIf="visibility.translationVisible">{{translationText}}</p>
